@@ -22,6 +22,6 @@ jobs:
         $ie = New-Object -ComObject InternetExplorer.Application
         $ie.Navigate("https://takanoriyanagitani.github.io/buffer2map/tests/dataview2map/kv33.html")
         $cnt = 64
-      $e = "66,255,16"
-      while (-not $ie.LocationName -eq $e -and $cnt -gt 0){ $cnt--; sleep 1 }
-      $ie.LocationName | findstr $e
+        $e = "66,255,16"
+        while (-not $ie.LocationName -eq $e -and $cnt -gt 0){ $cnt--; sleep 1 }
+        $ie.LocationName | findstr $e
