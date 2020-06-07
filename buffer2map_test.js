@@ -63,9 +63,9 @@ describe("buffer2map.js", () => {
 	const v11 = l[1]
 	const v30 = l[2]
 
-	expect(v10).toBe(v1[0])
-	expect(v11).toBe(v1[1])
-	expect(v30).toBe(v3[0])
+	expect(v10).toBe(v1[0] + "")
+	expect(v11).toBe(v1[1] + "")
+	expect(v30).toBe(v3[0] + "")
       })
     }, timeout)
 
