@@ -1,0 +1,4 @@
+.github/
+.buffer2map_test.js
+jest.config.js
+docs
