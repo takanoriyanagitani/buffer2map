@@ -1,8 +1,29 @@
+const { Builder } = require("selenium-webdriver")
+
+const chrome = require("selenium-webdriver/chrome")
+
+require("chromedriver")
+
+const timeout = 65536
+
 const Buffer2Map = require("./buffer2map")
 
 describe("buffer2map.js", () => {
 
   describe("dataview2map", () => {
+
+    const state = { browser: null }
+
+    beforeAll(() => Promise.resolve(new Builder())
+      .then(b=>b.forBrowser("chrome"))
+      .then(b=>b.setChromeOptions(new chrome.Options().headless()))
+      .then(b=>b.build())
+      .then(b=>Object.assign(state, {browser:b}))
+    , timeout)
+
+    afterAll(() => Promise.resolve(state.browser)
+      .then(b=>b.quit())
+    , timeout)
 
     test("kv33", () => {
       const ab = new ArrayBuffer(6)
@@ -32,7 +53,22 @@ describe("buffer2map.js", () => {
 
       expect(v3.length).toBe(1)
       expect(v3[0]).toBe(16)
-    })
+
+      return Promise.resolve(state.browser)
+      .then(b=>b.get("https://takanoriyanagitani.github.io/buffer2map/tests/dataview2map/kv33.html"))
+      .then(_=>state.browser.getTitle())
+      .then(t=>JSON.parse(t))
+      .then(o=>{
+	const {
+	  v10,
+	  v11,
+	  v30,
+	} = o
+	expect(v10).toBe(v1[0])
+	expect(v11).toBe(v1[1])
+	expect(v30).toBe(v3[0])
+      })
+    }, timeout)
 
     test("kv55", () => {
       const ab = new ArrayBuffer(8*4)
@@ -99,7 +135,7 @@ describe("buffer2map.js", () => {
 
       expect(lt[0]).toBe(0x0634)
       expect(lt[1]).toBe(0x0333)
-    })
+    }, timeout)
 
   })
 
