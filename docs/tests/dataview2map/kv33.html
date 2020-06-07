@@ -28,12 +28,11 @@
       const v1 = m.get(1)
       const v3 = m.get(3)
 
-      document.title = JSON.stringify({
-	v10: v1[0],
-	v11: v1[1],
-
-	v30: v3[0],
-      })
+      document.title = [
+	v1[0],
+	v1[1],
+	v3[0],
+      ].join(",")
     })()
   </script>
 </body>

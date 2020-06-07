@@ -57,13 +57,12 @@ describe("buffer2map.js", () => {
       return Promise.resolve(state.browser)
       .then(b=>b.get("https://takanoriyanagitani.github.io/buffer2map/tests/dataview2map/kv33.html"))
       .then(_=>state.browser.getTitle())
-      .then(t=>JSON.parse(t))
-      .then(o=>{
-	const {
-	  v10,
-	  v11,
-	  v30,
-	} = o
+      .then(t=>t.split(","))
+      .then(l=>{
+	const v10 = l[0]
+	const v11 = l[1]
+	const v30 = l[2]
+
 	expect(v10).toBe(v1[0])
 	expect(v11).toBe(v1[1])
 	expect(v30).toBe(v3[0])
