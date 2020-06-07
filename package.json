@@ -1,6 +1,6 @@
 {
   "name": "buffer2map",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "buffer(ArrayBuffer/Dataview) -> key value pair -> Map(key, value list)",
   "main": "buffer2map.js",
   "scripts": {
