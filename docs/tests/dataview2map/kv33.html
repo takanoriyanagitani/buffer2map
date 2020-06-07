@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>testing...</title>
+  <script src="https://unpkg.com/buffer2map/buffer2map.js"></script>
+</head>
+<body>
+  <script>
+    (function(){
+      const ab = new ArrayBuffer(6)
+      const dv = Buffer2Map.a2d(ab)
+
+      dv.setUint8(0, 0x01)
+      dv.setUint8(1, 0x42)
+
+      dv.setUint8(2, 0x01)
+      dv.setUint8(3, 0xff)
+
+      dv.setUint8(4, 0x03)
+      dv.setUint8(5, 0x10)
+
+      const keyf = function(d,b){ return d.getUint8(b)   }
+      const valf = function(d,b){ return d.getUint8(b+1) }
+      const rowpower = 1
+
+      const m = Buffer2Map.dataview2map(dv, keyf, valf, rowpower)
+
+      const v1 = m.get(1)
+      const v3 = m.get(3)
+
+      document.title = JSON.stringify({
+	v10: v1[0],
+	v11: v1[1],
+
+	v30: v3[0],
+      })
+    })()
+  </script>
+</body>
+</html>
