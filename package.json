@@ -1,6 +1,6 @@
 {
   "name": "buffer2map",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "buffer(ArrayBuffer/Dataview) -> key value pair -> Map(key, value list)",
   "main": "buffer2map.js",
   "scripts": {
@@ -12,7 +12,16 @@
     "type": "git",
     "url": "git+https://github.com/takanoriyanagitani/buffer2map.git"
   },
-  "keywords": [],
+  "keywords": [
+    "ArrayBuffer",
+    "DataView",
+    "Map",
+    "aggregate",
+    "groupby",
+    "ie11",
+    "selenium",
+    "chrome"
+  ],
   "author": "",
   "license": "MIT",
   "bugs": {
