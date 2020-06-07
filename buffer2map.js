@@ -16,7 +16,11 @@
 
 })(this, function(e){
 
-  e.a2d = function(buffer, byteOffset, byteLength){ return new DataView(buffer, byteOffset, byteLength) }
+  e.a2d = function(buffer, byteOffset, byteLength){ return new DataView(
+    buffer,
+    byteOffset || 0,
+    byteLength || buffer.byteLength
+  ) }
 
   e.key5 = function(dv, byteOffset){ return dv.getUint32(
     byteOffset + 0 || 0,
